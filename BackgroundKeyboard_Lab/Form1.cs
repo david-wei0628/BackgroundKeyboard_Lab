@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Windows.Input;
 
 namespace BackgroundKeyboard_Lab
 {
@@ -36,32 +35,32 @@ namespace BackgroundKeyboard_Lab
                 // Cancel the asynchronous operation.
                 backgroundWorker1.CancelAsync();
             }
+            label1.Text = backgroundWorker1.WorkerSupportsCancellation.ToString();
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             BackgroundWorker worker = sender as BackgroundWorker;
-            for (int i = 1; i <= 10; i++)
-            {
-                if (worker.CancellationPending == true)
-                {
-                    e.Cancel = true;
-                    break;
-                }
-                else
-                {
-                    // Perform a time consuming operation and report progress.
-                    System.Threading.Thread.Sleep(500);
-                    worker.ReportProgress(i * 10);
-                }
-            }
+            //for (int i = 1; i <= 10; i++)
+            //{
+            //    if (worker.CancellationPending == true)
+            //    {
+            //        e.Cancel = true;
+            //        break;
+            //    }
+            //    else
+            //    {
+            //        //Perform a time consuming operation and report progress.
+            //        System.Threading.Thread.Sleep(500);
+            //        worker.ReportProgress(i * 10);
+            //    }
+            //}
 
         }
 
         private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             Returnlabel.Text = e.ProgressPercentage.ToString() + "%";
-
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -74,10 +73,10 @@ namespace BackgroundKeyboard_Lab
             {
                 Returnlabel.Text = "Error: " + e.Error.Message;
             }
-            else
-            {
-                Returnlabel.Text = "Done!";
-            }
+            //else
+            //{
+            //    Returnlabel.Text = "Done!";
+            //}
         }
 
         private void Exit_btn_Click(object sender, EventArgs e)

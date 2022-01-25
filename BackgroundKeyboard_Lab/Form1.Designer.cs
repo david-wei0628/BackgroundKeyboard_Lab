@@ -87,7 +87,7 @@
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("UD Digi Kyokasho NK-B", 14.25F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(312, 171);
+            this.label1.Location = new System.Drawing.Point(277, 168);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(133, 49);
             this.label1.TabIndex = 4;
@@ -103,6 +103,7 @@
             this.Controls.Add(this.Returnlabel);
             this.Controls.Add(this.cancelAsyncButton);
             this.Controls.Add(this.startAsyncButton);
+            this.KeyPreview = true;
             this.Name = "Form1";
             this.Text = "KeyboardForBack";
             this.ResumeLayout(false);
