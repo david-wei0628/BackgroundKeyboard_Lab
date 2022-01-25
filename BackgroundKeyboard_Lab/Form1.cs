@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Input;
 
 namespace BackgroundKeyboard_Lab
 {
@@ -50,31 +51,38 @@ namespace BackgroundKeyboard_Lab
                 else
                 {
                     // Perform a time consuming operation and report progress.
-                    System.Threading.Thread.Sleep(50);
+                    System.Threading.Thread.Sleep(500);
                     worker.ReportProgress(i * 10);
                 }
             }
+
         }
 
         private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            label1.Text = (e.ProgressPercentage.ToString() + "%");
+            Returnlabel.Text = e.ProgressPercentage.ToString() + "%";
+
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
         {
             if (e.Cancelled == true)
             {
-                label1.Text = "Canceled!";
+                Returnlabel.Text = "Canceled!";
             }
             else if (e.Error != null)
             {
-                label1.Text = "Error: " + e.Error.Message;
+                Returnlabel.Text = "Error: " + e.Error.Message;
             }
             else
             {
-                label1.Text = "Done!";
+                Returnlabel.Text = "Done!";
             }
+        }
+
+        private void Exit_btn_Click(object sender, EventArgs e)
+        {
+            System.Environment.Exit(0);
         }
     }
 }
