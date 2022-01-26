@@ -35,32 +35,37 @@ namespace BackgroundKeyboard_Lab
                 // Cancel the asynchronous operation.
                 backgroundWorker1.CancelAsync();
             }
-            label1.Text = backgroundWorker1.WorkerSupportsCancellation.ToString();
         }
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             BackgroundWorker worker = sender as BackgroundWorker;
-            //for (int i = 1; i <= 10; i++)
-            //{
-            //    if (worker.CancellationPending == true)
-            //    {
-            //        e.Cancel = true;
-            //        break;
-            //    }
-            //    else
-            //    {
-            //        //Perform a time consuming operation and report progress.
-            //        System.Threading.Thread.Sleep(500);
-            //        worker.ReportProgress(i * 10);
-            //    }
-            //}
+            for (int i = 1; i <= 10; i++)
+            {
+                if (worker.CancellationPending == true)
+                {
+                    e.Cancel = true;
+                    break;
+                }
+                else
+                {
+                    //Perform a time consuming operation and report progress.
+                    System.Threading.Thread.Sleep(500);
+                    worker.ReportProgress(i * 10);
+                }
+                if(i == 10)
+                    i=0;
+            }
 
         }
 
         private void backgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
             Returnlabel.Text = e.ProgressPercentage.ToString() + "%";
+            //if(e.ProgressPercentage.ToString() == "20")
+            //{
+            //    Backboard();
+            //}
         }
 
         private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
@@ -82,6 +87,11 @@ namespace BackgroundKeyboard_Lab
         private void Exit_btn_Click(object sender, EventArgs e)
         {
             System.Environment.Exit(0);
+        }
+
+        private void BackKeyboard_KeyDown(object sender ,KeyEventArgs e)
+        {
+                label1.Text = e.KeyValue.ToString();
         }
     }
 }

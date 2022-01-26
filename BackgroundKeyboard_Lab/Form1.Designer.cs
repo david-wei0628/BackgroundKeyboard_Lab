@@ -89,7 +89,7 @@
             this.label1.Font = new System.Drawing.Font("UD Digi Kyokasho NK-B", 14.25F, System.Drawing.FontStyle.Bold);
             this.label1.Location = new System.Drawing.Point(277, 168);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(133, 49);
+            this.label1.Size = new System.Drawing.Size(358, 299);
             this.label1.TabIndex = 4;
             this.label1.Text = "label1";
             // 
@@ -106,6 +106,7 @@
             this.KeyPreview = true;
             this.Name = "Form1";
             this.Text = "KeyboardForBack";
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.BackKeyboard_KeyDown);
             this.ResumeLayout(false);
             this.PerformLayout();
 
