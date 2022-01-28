@@ -33,6 +33,10 @@ namespace BackgroundKeyboard_Lab
         [DllImport("user32.dll")]
         static extern int GetWindowText(IntPtr hWnd, System.Text.StringBuilder text, int count);//取視窗title
 
+        [DllImport("user32.dll")]
+        public static extern int GetWindowThreadProcessId(IntPtr hWnd, out int lpdwProcessId);
+
+
         /// <summary>
         /// 開始背景處理
         /// </summary>
@@ -164,6 +168,21 @@ namespace BackgroundKeyboard_Lab
                 return Buff.ToString();
             }
             return null;
+        }
+
+        /// <summary>
+        /// 視窗名稱
+        /// </summary>
+        /// <returns></returns>
+        private string GetActiveWindowName()
+        {
+            IntPtr handle = GetForegroundWindow();
+            int pId;
+            GetWindowThreadProcessId(handle, out pId);
+            System.Diagnostics.Process p = System.Diagnostics.Process.GetProcessById(pId);
+
+            return p.ProcessName;
+
         }
     }
 }

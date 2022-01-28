@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Diagnostics;
 using System.Collections;
+using System.Reflection;
 
 namespace BackgroundKeyboard_Lab
 {
@@ -50,7 +51,7 @@ namespace BackgroundKeyboard_Lab
             {
                 System.Environment.Exit(0);
             }
-            label1.Text = GetActiveWindowTitle();
+            //label1.Text = GetActiveWindowTitle();
         }
 
         private string GetActiveWindowTitle()
